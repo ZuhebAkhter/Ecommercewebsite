@@ -1,0 +1,23 @@
+.box{
+    background-color: #4d4d4d;
+    height: 15rem;
+    text-align: center;
+   padding-top: 6rem;
+   font-weight: bolder;
+   font-family: 'Times New Roman', Times, serif;
+   letter-spacing: 1px;
+}
+
+h1{
+    font-size: 75px;
+    color: white;
+    font-weight: 900;
+}
+li{
+    display: flex;
+}
+.icon{
+    width: 1.55rem;
+    height: 1.55rem;
+    color: red;
+}
