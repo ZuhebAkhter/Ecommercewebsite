@@ -7,7 +7,7 @@ const Footer = () => {
     <React.Fragment>
                
 
-      <nav class="navbar navbar-expand-sm bg-info navbar-dark ">
+      <nav className="navbar navbar-expand-sm bg-info navbar-dark ">
       <div className="container-fluid">
         <h2 className="fs-1 fw-bolder ps-5">The Generics</h2>
         

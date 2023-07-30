@@ -2,7 +2,7 @@ import React from "react";
 import './Header.css'
 import CartIcon from "../../Assers/CartIcon";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <React.Fragment>
       <header >
@@ -26,8 +26,8 @@ const Header = () => {
               </li>
             </ul>
            <span className="me-5"><div>
-            <button className="btn btn-success">YourCart</button></div>
-            <div className="icon"><CartIcon/></div>
+            <button onClick={props.onOpenCart} className="btn btn-success">YourCart</button></div>
+            <div className="icon"><CartIcon/>{1}</div>
             </span>
           </div>
           
