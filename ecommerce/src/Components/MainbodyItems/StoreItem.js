@@ -1,5 +1,6 @@
 import React from "react";
 import ItemViewonScreen from "./ItemViewonScreen";
+import SeeCartBtn from "./Buttons/SeeCartBtn";
 
 const productsArr = [
   {
@@ -51,7 +52,7 @@ const productsArr = [
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
 ];
-const StoreItem = () => {
+const StoreItem = (props) => {
   return (
     <React.Fragment>
        
@@ -70,6 +71,8 @@ const StoreItem = () => {
           </div>
         ))}
       </div>
+      <SeeCartBtn onClick={props.onClick} />
+
     </React.Fragment>
   );
 };

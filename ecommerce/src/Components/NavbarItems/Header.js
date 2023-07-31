@@ -1,3 +1,4 @@
+
 import React,{useContext} from "react";
 import CartIcon from "../../Assers/CartIcon";
 import CartContext from "../Store/CartContext";
@@ -17,17 +18,17 @@ const Header = (props) => {
           <div className="container-fluid">
             <ul className="navbar-nav mx-auto p-2 ">
               <li className="nav-item ">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/home">
                   HOME
                 </a>
               </li>
               <li className="nav-item px-5">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/store">
                   STORE
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a  className="nav-link" href='/about'>
                   ABOUT
                 </a>
               </li>
@@ -40,9 +41,7 @@ const Header = (props) => {
           </div>
           
         </nav>
-        <div className='box'>
-
-        </div>
+        
       </header>
       
     </React.Fragment>
