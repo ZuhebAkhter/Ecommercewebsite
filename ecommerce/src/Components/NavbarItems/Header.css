@@ -1,12 +1,6 @@
-.box{
-    background-color: #4d4d4d;
-    height: 15rem;
-    text-align: center;
-   padding-top: 6rem;
-   font-weight: bolder;
-   font-family: 'Times New Roman', Times, serif;
-   letter-spacing: 1px;
-}
+/* .box{
+    width: 10rem;
+} */
 
 h1{
     font-size: 75px;

@@ -1,8 +1,15 @@
-import React from "react";
-import './Header.css'
+import React,{useContext} from "react";
 import CartIcon from "../../Assers/CartIcon";
+import CartContext from "../Store/CartContext";
+import './Header.css'
 
 const Header = (props) => {
+   const cartCtx= useContext(CartContext);
+
+   const numberOfcart=cartCtx.items.reduce((curNum,item)=>{
+    return curNum + item.amount;
+   },0);
+// const numberOfcart=cartCtx.items.length;
   return (
     <React.Fragment>
       <header >
@@ -26,17 +33,18 @@ const Header = (props) => {
               </li>
             </ul>
            <span className="me-5"><div>
-            <button onClick={props.onOpenCart} className="btn btn-success">YourCart</button></div>
-            <div className="icon"><CartIcon/>{1}</div>
+            <button onClick={props.onOpenCart} className="btn btn-success">YourCart({numberOfcart})</button>
+            <div className="icon me-5"><CartIcon/></div></div>
+           
             </span>
           </div>
           
         </nav>
+        <div className='box'>
+
+        </div>
       </header>
-      <div className="box">
-        <h1>The Generics</h1>
-        
-      </div>
+      
     </React.Fragment>
   );
 };

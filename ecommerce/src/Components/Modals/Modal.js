@@ -1,33 +1,19 @@
-import React from "react";
+import React,{useContext} from "react";
 import ReactDOM from "react-dom";
 import "./Modal.css";
+import CartContext from "../Store/CartContext";
 
 const Modal = ({ isOpen, onClose }) => {
+    const cartCtx=useContext(CartContext);
+    console.log(cartCtx)
+
+     const totalAmount=`${cartCtx.totalAmount.toFixed(2)}`;
+     const Quantity=cartCtx.items.amount;
+    console.log(Quantity)
   if (!isOpen) return null;
 
-  const cartElements = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ];
+  const hasItem=cartCtx.items.length>0;
+  
 
   return ReactDOM.createPortal(
     <div className="modal fade show scrollable" style={{ display: "block" }}>
@@ -55,14 +41,14 @@ const Modal = ({ isOpen, onClose }) => {
                   <th>Quantity</th>
                 </tr>
               </thead>
-              {cartElements.map((element) => (
-                <tbody>
+              {cartCtx.items.map((element) => (
+                <tbody key={element.id}>
                   <tr>
                     <td>
-                      <div className="w-25">
+                      <div className="w-50">
                           <img
                             className="img-thumbnail d-inline"
-                            src={element.imageUrl}
+                            src={element.image}
                             alt="not"
                           ></img>
                           
@@ -71,12 +57,12 @@ const Modal = ({ isOpen, onClose }) => {
                     </td>
                     <td className="fw-medium">{element.title}</td>
                     <td className="fw-medium">{element.price}</td>
-                    <td><span class="border border-black rounded fw-medium p-1">01</span><button className="btn btn-danger text-muted mt-2">Remove</button></td>
+                    <td><span className="border border-black rounded fw-medium p-1">x{element.amount}</span><button className="btn btn-danger text-muted mt-2">Remove</button></td>
                   </tr>
                 </tbody>
-              ))}
+))}
             </table>
-           <h5> Total Amount:</h5><div className="float-end fs-5">{25.67}$</div>
+           <h5> Total Amount:</h5><div className="float-end fs-5">{totalAmount}$</div>
             
           </div>
           <div className="modal-footer">
@@ -88,9 +74,9 @@ const Modal = ({ isOpen, onClose }) => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+           {hasItem && <button type="button" className="btn btn-primary">
               Purchase
-            </button>
+            </button>}
           </div>
         </div>
       </div>

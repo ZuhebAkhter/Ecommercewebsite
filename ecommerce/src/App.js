@@ -5,6 +5,8 @@ import Footer from "./Components/FooterItems/Footer";
 import StoreItem from "./Components/MainbodyItems/StoreItem";
 import SeeCartBtn from "./Components/MainbodyItems/Buttons/SeeCartBtn";
 import Modal from "./Components/Modals/Modal";
+import CardProvider from "./Components/Store/CardProvider";
+import Menubar from "./Components/NavbarItems/Menubar";
 
 function App() {
   
@@ -18,8 +20,9 @@ function App() {
     setModalIsOpen(false);
   };
   return (
-    <React.Fragment>
+    <CardProvider>
       <Header  onOpenCart={handleModalOpen}/> 
+      <Menubar/>
       <main>
         <StoreItem />
          <SeeCartBtn onClick={handleModalOpen}/>
@@ -28,14 +31,8 @@ function App() {
       </main>
       <Footer />
       
-    </React.Fragment>
-    // <div>
-    //   <h1>React Modal Example</h1>
-    //   <button className="btn btn-primary" onClick={handleModalOpen}>
-    //     Open Modal
-    //   </button>
-    //   <Modal isOpen={modalIsOpen} onClose={handleModalClose}/>
-    // </div>
+    </CardProvider>
+   
   );
 }
 
