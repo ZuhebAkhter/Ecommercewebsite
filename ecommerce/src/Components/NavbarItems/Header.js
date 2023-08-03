@@ -1,5 +1,5 @@
-
 import React,{useContext} from "react";
+import { Link } from "react-router-dom";
 import CartIcon from "../../Assers/CartIcon";
 import CartContext from "../Store/CartContext";
 import './Header.css'
@@ -13,24 +13,29 @@ const Header = (props) => {
 // const numberOfcart=cartCtx.items.length;
   return (
     <React.Fragment>
-      <header >
+      
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top justify-content-center">
           <div className="container-fluid">
             <ul className="navbar-nav mx-auto p-2 ">
-              <li className="nav-item ">
-                <a className="nav-link" href="/home">
-                  HOME
-                </a>
-              </li>
               <li className="nav-item px-5">
-                <a className="nav-link" href="/store">
-                  STORE
-                </a>
+                <Link className="nav-link" to="/home">
+                  HOME
+                </Link>
               </li>
               <li className="nav-item">
-                <a  className="nav-link" href='/about'>
+                <Link className="nav-link" to="/store">
+                  STORE
+                </Link>
+              </li>
+              <li className="nav-item px-5">
+                <Link  className="nav-link" to='/about'>
                   ABOUT
-                </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link  className="nav-link" to='/contactus'>
+                  CONTACT US
+                </Link>
               </li>
             </ul>
            <span className="me-5"><div>
@@ -42,7 +47,7 @@ const Header = (props) => {
           
         </nav>
         
-      </header>
+      
       
     </React.Fragment>
   );
