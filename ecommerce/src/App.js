@@ -10,6 +10,8 @@ import "./App.css";
 import About from "./Pages/About";
 import Home from "./Pages/Home";
 import ContactForm from "./Pages/ContactForm";
+import ProductDetails from "./Pages/ProductDetails";
+import LoginPage from "./Pages/LoginPage";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,24 +30,12 @@ async function userDataHandler(users){
     console.log(data)
   }
 
-
-  //  const router=createBrowserRouter([
-  //   {
-  //     path:'/',
-  //     element:<Root/>,
-  //     children:[
-  //       {path:'/',element : <StoreItem onClick={handleModalOpen}/>},
-
-  //       {path:'/about',element : <About/>},
-  //       {path:'/home',element:<Home/>}
-  //     ]
-  //   }
-  //  ])
-
   const handleModalClose = () => {
     setModalIsOpen(false);
   };
+  
   return (
+    
     <CardProvider>
       <header>
         <Header onOpenCart={handleModalOpen} />
@@ -54,11 +44,18 @@ async function userDataHandler(users){
       <Modal isOpen={modalIsOpen} onClose={handleModalClose} />
       <main>
         <Routes>
-          <Route path="/" element={<StoreItem />}></Route>
+          <Route path="/auth"  element={<LoginPage/>}> </Route>
+          <Route path="/"  element={<LoginPage/>}> </Route>
+
+          <Route path="/store" element={<StoreItem />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/contactus" element={<ContactForm onAddingUser={userDataHandler}/>}></Route>
+          <Route path='*' element={<div className="container-fluid"><p>Page NOt Founf</p></div>}/>
+
+          <Route path='/store/:productid' element={<ProductDetails/>}></Route>
         </Routes>
+        
       </main>
       <footer>
         <Footer />
