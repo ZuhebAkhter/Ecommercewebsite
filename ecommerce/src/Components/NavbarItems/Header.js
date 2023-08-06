@@ -17,6 +17,8 @@ const Header = (props) => {
 const logoutHandler=()=>{
   AuthCtx.logout()
   navigate('/auth')
+  localStorage.removeItem('email')
+  
 }
   return (
     <React.Fragment>
@@ -62,6 +64,8 @@ const logoutHandler=()=>{
            {AuthCtx.isLogged && <button onClick={logoutHandler} className="btn btn-danger me-2">Logout</button>}
 
             <button onClick={props.onOpenCart} className="btn btn-success"><CartIcon/>({numberOfcart})</button>
+            {AuthCtx.items1.length > 5 && <button onClick={props.onOpenCart1} className="btn btn-danger mx-2">PrevCart</button>}
+
             </div>
            
             </span>

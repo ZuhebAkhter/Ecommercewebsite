@@ -1,51 +1,22 @@
-import React,{useContext} from "react";
+import React,{useContext, useEffect} from "react";
 import ReactDOM from "react-dom";
-import "./Modal.css";
-import CartContext from "../Store/CartContext";
 import AuthContext from "../Store/AuthContext";
 
-const Modal = ({isOpen,onClose},props) => {
-  console.log(props)
-const cartCtx=useContext(CartContext);
-console.log(cartCtx)
+const Modal1 = ({isOpen1,onClose1}) => {
 const authCtx=useContext(AuthContext)
 console.log(authCtx.items1)
-// useEffect(()=>{
-//   console.log(authCtx.items1)
+useEffect(()=>{
+  console.log(authCtx.items1)
 
-// },[authCtx.items1])
-
-// const Useremail=authCtx.UserEmail?.split(/[@.]/).join("");
-// async function getData(){
-//   try{
-//     const res= await axios.get(`https://crudcrud.com/api/75c0137249614ad497646275c27ddc8c/Cartdetails${Useremail}`)
-//     console.log(res.data)
-//     res.data.map((ele)=>{
-//       cartCtx.addItem({
-//         id:ele.id,
-//         image:ele.image,
-//         title:ele.title
-//       })
-//     })
-    
-//   }catch{
-  
-//   }
-// }
-
+},[authCtx.items1])
 
 
     
-    const removeCartHandler=(id)=>{
-      cartCtx.removeItem(id)
-     
-    }
-
-     const totalAmount=`${cartCtx.totalAmount.toFixed(2)}`;
+    //  const totalAmount=`${cartCtx.totalAmount.toFixed(2)}`;
+    const hasItem=authCtx.items1.length>0;
     
-  if (!isOpen) return null;
+  if (!isOpen1) return null;
 
-  const hasItem=cartCtx.items.length>0;
   
 
   return ReactDOM.createPortal(
@@ -53,13 +24,13 @@ console.log(authCtx.items1)
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title fs-3">Cart</h5>
+            <h5 className="modal-title fs-3">Previously Checked Items </h5>
             <button
               type="button"
               className="close"
               data-dismiss="modal"
               aria-label="Close"
-              onClick={onClose}
+              onClick={onClose1}
             >
               <span aria-hidden="true">&times;</span>
             </button>
@@ -74,7 +45,7 @@ console.log(authCtx.items1)
                   <th>Quantity</th>
                 </tr>
               </thead>
-              {cartCtx.items.map((element) => (
+              {authCtx.items1.map((element) => (
                 
                 <tbody key={element.id}>
                   <tr>
@@ -91,14 +62,13 @@ console.log(authCtx.items1)
                     </td>
                     <td className="fw-medium">{element.title}</td>
                     <td className="fw-medium">{element.price}</td>
-                    <td><span className="border border-black rounded fw-medium p-1">x{element.amount}</span><button onClick={removeCartHandler.bind(null,element.id)} className="btn btn-danger  mt-2">Remove</button></td>
+                    <td><span className="border border-black rounded fw-medium p-1">x{element.amount}</span></td>
                   </tr>
                 </tbody>
                 
  ))} 
  
             </table>
-           <h5> Total Amount:</h5><div className="float-end fs-5">{totalAmount}$</div>
             
           </div>
           <div className="modal-footer">
@@ -106,7 +76,7 @@ console.log(authCtx.items1)
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
-              onClick={onClose}
+              onClick={onClose1}
             >
               Close
             </button>
@@ -121,4 +91,4 @@ console.log(authCtx.items1)
   );
 };
 
-export default Modal;
+export default Modal1;
