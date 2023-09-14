@@ -62,14 +62,18 @@ useEffect(()=>{
                     </td>
                     <td className="fw-medium">{element.title}</td>
                     <td className="fw-medium">{element.price}</td>
-                    <td><span className="border border-black rounded fw-medium p-1">x{element.amount}</span></td>
+                    {/* <td><span className="border border-black rounded fw-medium p-1">x{element.}</span></td> */}
                   </tr>
+
                 </tbody>
+
                 
  ))} 
- 
+
             </table>
             
+            <h5> Total Amount:</h5><div className="float-end fs-5">{authCtx.totalamount1}$</div>
+
           </div>
           <div className="modal-footer">
             <button

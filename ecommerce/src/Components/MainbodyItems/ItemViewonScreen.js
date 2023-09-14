@@ -28,7 +28,7 @@ const ItemViewonScreen = (props) => {
 
     try {
       const res = await axios.post(
-        `https://crudcrud.com/api/b83f81215fc94589918d565fa81f957a/Cartdetails${emailofUser}`,
+        `https://crudcrud.com/api/eb83d5b2a3c949368d92eb721305df55/Cartdetails${emailofUser}`,
         {
           id: props.id,
           image: props.imageUrl,
@@ -42,27 +42,26 @@ const ItemViewonScreen = (props) => {
  
  
  
- 
   return (
     <div className="d-flex justify-content-evenly ">
       <div
         id={props.id}
-        className="container col-6 justify-content-centr ps-5 gx-5"
+        className="container col-4 justify-content-centr ps-1 gx-1 "
       >
         <Link
           className="link-underline link-underline-opacity-0"
           to={`/store/${props.id}`}
         >
           <h2
-            className="text-secondary font-monospace fw-medium fs-3 p-2 "
+            className="text-secondary font-monospace fw-medium fs-5 p-2 "
             href="#"
           >
-            {props.title}
+            {props.title.substring(0,25)}
           </h2>
         </Link>
         <Link to={`/store/${props.id}`}>
           <img
-            className="object-fit-cover border rounded border border-succes p-2"
+            className="img-thumbnail"
             src={props.imageUrl}
             alt="Pic not found"
           ></img>

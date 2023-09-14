@@ -2,7 +2,7 @@ import React,{useRef,useContext,useState} from 'react'
 import AuthContext from '../Components/Store/AuthContext';
 import {useNavigate} from 'react-router-dom'
 
-const LoginPage =  () => {
+const LoginPage =  (props) => {
     const [Loading,setLoading]=useState(false)
     const emailInputRef=useRef();
     const passwordInputRef=useRef();
@@ -14,6 +14,7 @@ const LoginPage =  () => {
     event.preventDefault();
     const enteredEmail=emailInputRef.current.value;
     const enteredPassword=passwordInputRef.current.value;
+    localStorage.setItem('email',enteredEmail)
     try{
         setLoading(true)
       const  response= await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCjf_6OaBAYfGFkAEhAsm9ieCsnYoow8Ng',
@@ -28,10 +29,13 @@ const LoginPage =  () => {
       setLoading(false)
 
       const data=await response.json();
+      console.log(data.email)
 
       if(response.ok){
       LoginCtx.login(data.idToken)
       navigate('/store')
+      LoginCtx.email(data.email);
+      
       }else{
         alert(data.error.message)
       }
@@ -47,15 +51,15 @@ const LoginPage =  () => {
   return (
     <React.Fragment>
         <div className='d-flex justify-content-center p-5'>
-        <form className='w-25  border rounded border-primary py-3 px-5 m-5' onSubmit={submitLoginHandler}>
+        <form className='border rounded border-primary py-3 px-5 m-5' onSubmit={submitLoginHandler}>
     <h3 className='text-center fw-semibold'>Sign In</h3>
   <div className="mb-3 ">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address:</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ref={emailInputRef}/>
+    <label htmlFor="InputEmail1" className="form-label">Email address:</label>
+    <input type="email" className="form-control" id="InputEmail1" aria-describedby="emailHelp" ref={emailInputRef}/>
   </div>
   <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password:</label>
-    <input type="password" className="form-control" id="exampleInputPassword1" ref={passwordInputRef}/>
+    <label htmlFor="InputPassword1" className="form-label">Password:</label>
+    <input type="password" className="form-control" id="InputPassword1" ref={passwordInputRef}/>
   </div>
   
   <button type="submit" className="btn btn-primary mx-auto">Log In</button><br/>

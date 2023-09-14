@@ -18,6 +18,7 @@ const logoutHandler=()=>{
   AuthCtx.logout()
   navigate('/auth')
   localStorage.removeItem('email')
+  localStorage.setItem('emailload',AuthCtx.UserEmail)
   
 }
   return (
@@ -27,28 +28,28 @@ const logoutHandler=()=>{
           <div className="container-fluid">
             <ul className="navbar-nav mx-auto p-2 ">
               <li className="nav-item">
-                <Link className="nav-link" to="/home">
+                <Link className="nav-link pe-5" to="/home">
                   HOME
                 </Link>
               </li>
-              {AuthCtx.isLogged && <li className="nav-item px-5">
-                <Link className="nav-link" to="/store">
+              {AuthCtx.isLogged && <li className="nav-item">
+                <Link className="nav-link pe-5" to="/store">
                   STORE
                 </Link>
               </li>}
              
               {!AuthCtx.isLogged && <li className="nav-item px-5">
-                <Link className="nav-link" to="/auth">
+                <Link className="nav-link pe-5" to="/auth">
                   STORE
                 </Link>
               </li>}
               <li className="nav-item">
-                <Link  className="nav-link" to='/about'>
+                <Link  className="nav-link pe-5" to='/about'>
                   ABOUT
                 </Link>
               </li>
               <li className="nav-item px-5">
-                <Link  className="nav-link" to='/contactus'>
+                <Link  className="nav-link pe-5" to='/contactus'>
                   CONTACT US
                 </Link>
               </li>
@@ -63,8 +64,8 @@ const logoutHandler=()=>{
            <span className="me-5"><div>
            {AuthCtx.isLogged && <button onClick={logoutHandler} className="btn btn-danger me-2">Logout</button>}
 
-            <button onClick={props.onOpenCart} className="btn btn-success"><CartIcon/>({numberOfcart})</button>
-            {AuthCtx.items1.length > 5 && <button onClick={props.onOpenCart1} className="btn btn-danger mx-2">PrevCart</button>}
+            {AuthCtx.isLogged && <button onClick={props.onOpenCart} className="btn btn-success"><CartIcon/>({numberOfcart})</button>}
+            {AuthCtx.items1.length > 0 && <button onClick={props.onOpenCart1} className="btn btn-danger mx-2">PrevCart</button>}
 
             </div>
            

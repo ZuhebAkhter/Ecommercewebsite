@@ -16,6 +16,7 @@ const ContactForm = (props) => {
     nameInputref.current.value = "";
     emailInputref.current.value = "";
     numberInputref.current.value = "";
+    alert('Thanks For Reaching..You will recieve reponse Soon')
   };
   return (
     <div className="container d-flex justify-content-center">

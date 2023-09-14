@@ -40,6 +40,7 @@ console.log(authCtx.items1)
       cartCtx.removeItem(id)
      
     }
+    console.log(cartCtx.totalAmount)
 
      const totalAmount=`${cartCtx.totalAmount.toFixed(2)}`;
     

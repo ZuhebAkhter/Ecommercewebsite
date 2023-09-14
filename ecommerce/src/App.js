@@ -34,27 +34,35 @@ function App() {
   
   const handleModalOpen = async () => {
     setModalIsOpen(true);
-  
-      
-  try {
-    const res = await axios.get(
-      `https://crudcrud.com/api/b83f81215fc94589918d565fa81f957a/Cartdetails${emailofUser}`
-    );
-    console.log(res);
-    // setdata(res.data);
-    res.data.map((ele)=>{
-
-      authCtx.items1.push({
-        id: ele.id,
-        image: ele.image,
-        title: ele.title,
-        price: ele.price,
-        amount: ele.amount,
+  const itemToken=localStorage.getItem('emailload');
+  if(itemToken===authCtx.UserEmail){
+    try {
+      const res = await axios.get(
+        `https://crudcrud.com/api/eb83d5b2a3c949368d92eb721305df55/Cartdetails${emailofUser}`
+      );
+      console.log(res);
+      // setdata(res.data);
+      let total1=0;
+   let prevId=null;
+      res.data.map((ele)=>{
+        total1=total1 + ele.price;
+        authCtx.items1.push({
+          id: ele.id,
+          image: ele.image,
+          title: ele.title,
+          price: ele.price,
+          amount: ele.amount,
+          total:total1
+        })
+        
+        authCtx.totalamount1=total1;
+        console.log(authCtx)
       })
-      console.log(authCtx.items1)
-    })
-    
-  } catch {}
+      
+    } catch {}
+  }
+      
+  
 
    
     // if(Data!==null){
@@ -104,6 +112,33 @@ function App() {
   //   })
   // }
   // };
+
+  // window.onload =async function() {
+  //   try {
+  //     const res = await axios.get(
+  //       `https://crudcrud.com/api/eb83d5b2a3c949368d92eb721305df55/Cartdetails${emailofUser}`
+  //     );
+  //     console.log(res);
+  //     // setdata(res.data);
+  //     let total1=0;
+  //  let prevId=null;
+  //     res.data.map((ele)=>{
+  //       total1=total1 + ele.price;
+  //       authCtx.items1.push({
+  //         id: ele.id,
+  //         image: ele.image,
+  //         title: ele.title,
+  //         price: ele.price,
+  //         amount: ele.amount,
+  //         total:total1
+  //       })
+        
+  //       authCtx.totalamount1=total1;
+  //       console.log(authCtx)
+  //     })
+      
+  //   } catch {}
+// }
 
   return (
     <CardProvider>

@@ -13,7 +13,7 @@ const Footer = () => {
         
 
         <div className="ms-auto w-25">
-    <a  className="btn" href="www.youtube.com"><Youtubeicom/></a></div>
+    <a  className="btn-1" href="www.youtube.com"><Youtubeicom/></a></div>
       </div>
         
       </nav>
